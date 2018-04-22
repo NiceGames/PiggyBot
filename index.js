@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.client();
+const client = new Discord.Client();
 var servers = {};
 
 
