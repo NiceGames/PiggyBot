@@ -1,5 +1,6 @@
 const Discord = require("discord.js")
 const client = new Discord.Client();
+var bot = new Discord.Client();
 var servers = {};
 
 const bot = new Discord.Client({disableEveryone: true});
@@ -25,14 +26,18 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 
 
-  let prefix = botconfig.prefix;
+  let prefix = ".";
+    client.on("message", (message) => {
+
+  if (!message.content.startsWith(prefix)) return;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
 
 
-  if(cmd === `${prefix}serverinfo`){
+  if (message.content === (prefix + "serverinfo")) {
+
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
@@ -47,7 +52,8 @@ bot.on("message", async message => {
    return message.channel.send(serverembed);
  }
 
- if (cmd === `${prefix}say`){
+if (message.content === (prefix + "say")) {
+    
  		message.delete()
          const embed = new Discord.RichEmbed()
  		.setColor(0x954D23)
@@ -56,7 +62,8 @@ bot.on("message", async message => {
 }
 
 
-   if(cmd === `${prefix}botinfo`){
+   if (message.content === (prefix + "botinfo")) {
+
 
    let bicon = bot.user.displayAvatarURL;
    let botembed = new Discord.RichEmbed()
@@ -71,7 +78,7 @@ bot.on("message", async message => {
 
 
 
-   if (cmd === `${prefix}report`){
+   if (message.content === (prefix + "report")) {
    var reportchannel = bot.channels.get('435862363158085652');
              var reporteduser = message.mentions.users.first().id;
              var reportreason = message.content.split(' ').slice(3).join(' ');
@@ -92,7 +99,7 @@ bot.on("message", async message => {
 
              message.reply(`We got your report! Thanks :heart:`);
    }
-   if (cmd === `${prefix}help`){
+   if (message.content === (prefix + "help")) {
    message.reply('שולח לך בפרטי נודר');
    message.author.send(`${prefix}serverinfo - info about the server\n\
 ${prefix}report - report someone for breaking the server rules
@@ -101,7 +108,7 @@ ${prefix}moveall (room) (-mute - if you want) - move members - only staff
 ${prefix}say (text) - The bot says what you say`);
    }
 
-if (cmd === `${prefix}moveall`){
+if (message.content === (prefix + "moveall")) {
   let isAdmin = message.member.roles.filterArray(role => {return role.name === 'Owner' || role.name === 'Move-all-er';}).length;
   if (isAdmin === 0){
     return;
