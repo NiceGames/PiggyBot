@@ -149,7 +149,7 @@ function MoveMuteUsers(findChannel){
         });
    }
 }
-
+});
 
 // * Move from specific channels.
 // * ignore specific users.
