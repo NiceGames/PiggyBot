@@ -147,7 +147,6 @@ function MoveMuteUsers(findChannel){
         console.log('moving');
         });
     }
-});
 }
 
 
