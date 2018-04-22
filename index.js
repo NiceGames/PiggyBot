@@ -1,23 +1,24 @@
-const botconfig = require("./botconfig.json");
-const Discord = require("discord.js")
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+var bot = new Discord.Client();
 var servers = {};
 
-const bot = new Discord.Client({disableEveryone: true});
+
 
 // When the bot comes online the game will be with the current servers
 bot.on("ready", function() {
-    bot.user.setGame(`${bot.guilds.size} servers | .help`);
+    bot.user.setGame(`${bot.guilds.size} servers | _help`);
 });
 
 // Updates the bot's status if he joins a server
 bot.on("guildCreate", guild => {
-    bot.user.setGame(`${bot.guilds.size} servers | .help`);
+    bot.user.setGame(`${bot.guilds.size} servers | _help`);
 });
 
 /// Updates the bot's status if he leaves a servers
 bot.on("guildDelete", guild => {
     bot.user.setGame(
-        `${bot.guilds.size} servers | .help`);
+        `${bot.guilds.size} servers | _help`);
 });
 
 bot.on("message", async message => {
@@ -25,14 +26,18 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 
 
-  let prefix = botconfig.prefix;
+  const prefix = "_ ";
+    client.on("message", (message) => {
+
+  if (!message.content.startsWith(prefix)) return;
+        
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
 
 
-  if(cmd === `${prefix}serverinfo`){
+  if (message.content === (prefix + "serverinfo")) {
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
@@ -47,7 +52,7 @@ bot.on("message", async message => {
    return message.channel.send(serverembed);
  }
 
- if (cmd === `${prefix}say`){
+  if (message.content === (prefix + "say")) {
  		message.delete()
          const embed = new Discord.RichEmbed()
  		.setColor(0x954D23)
@@ -56,7 +61,7 @@ bot.on("message", async message => {
 }
 
 
-   if(cmd === `${prefix}botinfo`){
+    if (message.content === (prefix + "botinfo")) {
 
    let bicon = bot.user.displayAvatarURL;
    let botembed = new Discord.RichEmbed()
@@ -71,7 +76,7 @@ bot.on("message", async message => {
 
 
 
-   if (cmd === `${prefix}report`){
+   if (message.content === (prefix + "report")) {
    var reportchannel = bot.channels.get('435862363158085652');
              var reporteduser = message.mentions.users.first().id;
              var reportreason = message.content.split(' ').slice(3).join(' ');
@@ -92,16 +97,17 @@ bot.on("message", async message => {
 
              message.reply(`We got your report! Thanks :heart:`);
    }
-   if (cmd === `${prefix}help`){
+    
+     if (message.content === (prefix + "help")) {
    message.reply('שולח לך בפרטי נודר');
    message.author.send(`${prefix}serverinfo - info about the server\n\
-${prefix}report - report someone for breaking the server rules
-${prefix}botinfo - info about the bot
-${prefix}moveall (room) (-mute - if you want) - move members - only staff
-${prefix}say (text) - The bot says what you say`);
+_report - report someone for breaking the server rules
+_botinfo - info about the bot
+_moveall (room) (-mute - if you want) - move members - only staff
+_say (text) - The bot says what you say`);
    }
 
-if (cmd === `${prefix}moveall`){
+  if (message.content === (prefix + "moveall")) {
   let isAdmin = message.member.roles.filterArray(role => {return role.name === 'Owner' || role.name === 'Move-all-er';}).length;
   if (isAdmin === 0){
     return;
