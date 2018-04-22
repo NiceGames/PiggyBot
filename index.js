@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var bot = new Discord.Client();
-var servers = {};
+
 
 
 
