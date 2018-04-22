@@ -1,7 +1,5 @@
 const Discord = require("discord.js")
-const client = new Discord.Client();
-var bot = new Discord.Client();
-var servers = {};
+const bot = new Discord.Client({disableEveryone: true});
 
 
 // When the bot comes online the game will be with the current servers
