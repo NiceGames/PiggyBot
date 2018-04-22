@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const client = new Discord.Client();
 var servers = {};
 
 const bot = new Discord.Client({disableEveryone: true});
