@@ -4,7 +4,6 @@ var bot = new Discord.Client();
 
 
 
-
 // When the bot comes online the game will be with the current servers
 bot.on("ready", function() {
     bot.user.setGame(`${bot.guilds.size} servers | .help`);
