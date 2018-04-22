@@ -148,7 +148,6 @@ function MoveMuteUsers(findChannel){
         console.log('moving');
         });
    }
-}
 });
 
 // * Move from specific channels.
