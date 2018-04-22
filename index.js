@@ -147,8 +147,9 @@ function MoveMuteUsers(findChannel){
         memberNumber.setMute(true, 'moveall');
         console.log('moving');
         });
-   }
+    }
 });
+}
 
 // * Move from specific channels.
 // * ignore specific users.
