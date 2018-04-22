@@ -150,4 +150,4 @@ function MoveMuteUsers(findChannel){
 // * ignore specific users.
 
 
-bot.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
