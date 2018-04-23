@@ -65,8 +65,9 @@ client.on("message", async message => {
 
      return message.channel.send(botembed);
    }
-
-
+ if (cmd === `${prefix}invite`){
+   message.reply('Invite the bot to your server :wink: https://discordapp.com/oauth2/authorize?client_id=433340501111078922&scope=bot&permissions=20972552');
+ }
 
    if (cmd === `${prefix}report`){
    var reportchannel = client.channels.get('435862363158085652');
