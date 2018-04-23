@@ -96,7 +96,8 @@ client.on("message", async message => {
 ${prefix}report - report someone for breaking the server rules
 ${prefix}botinfo - info about the bot
 ${prefix}moveall (room) (-mute - if you want) - move members - only staff
-${prefix}say (text) - The bot says what you say`);
+${prefix}say (text) - The bot says what you say
+${prefix}invite - invite the bot to your server by .invite`);
    }
 
 if (cmd === `${prefix}moveall`){
