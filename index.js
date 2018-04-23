@@ -7,17 +7,17 @@ client.on('ready', () => {
 });
 
 // Updates the bot's status if he joins a server
-bot.on("guildCreate", guild => {
-    bot.user.setGame(`${bot.guilds.size} servers | .help`);
+client.on("guildCreate", guild => {
+   client.user.setGame(`${bot.guilds.size} servers | .help`);
 });
 
 /// Updates the bot's status if he leaves a servers
-bot.on("guildDelete", guild => {
-    bot.user.setGame(
+client.on("guildDelete", guild => {
+    client.user.setGame(
         `${bot.guilds.size} servers | .help`);
 });
 
-bot.on("message", async message => {
+client.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
