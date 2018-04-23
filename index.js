@@ -69,7 +69,7 @@ client.on("message", async message => {
 
 
    if (cmd === `${prefix}report`){
-   var reportchannel = bot.channels.get('435862363158085652');
+   var reportchannel = client.channels.get('435862363158085652');
              var reporteduser = message.mentions.users.first().id;
              var reportreason = message.content.split(' ').slice(3).join(' ');
 
@@ -105,7 +105,7 @@ if (cmd === `${prefix}moveall`){
   }
   if (message.content.indexOf(".moveall") > -1) {
     channelGetName = message.content.slice(9, 9999);
-    findChannel = bot.channels.find('name', channelGetName);
+    findChannel = client.channels.find('name', channelGetName);
     if (message.content.indexOf("-mute") > -1) {
       MoveMuteUsers(findChannel);
     } else{
@@ -116,7 +116,7 @@ if (cmd === `${prefix}moveall`){
 });
 
 function MoveUsers(findChannel){
-  bot.channels.findAll('type', 'voice').forEach(channelInfo => {
+  client.channels.findAll('type', 'voice').forEach(channelInfo => {
     if (channelInfo.name.indexOf("AFK") > -1 ){
       console.log("afk");
     } else {
@@ -129,7 +129,7 @@ function MoveUsers(findChannel){
 }
 
 function MoveMuteUsers(findChannel){
-  bot.channels.findAll('type', 'voice').forEach(channelInfo => {
+  client.channels.findAll('type', 'voice').forEach(channelInfo => {
     if (channelInfo.name.indexOf("AFK") > -1 ){
       console.log("afk");
     } else {
