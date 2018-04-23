@@ -1,12 +1,9 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
-var bot = new Discord.Client();
 
-
-
-// When the bot comes online the game will be with the current servers
-bot.on("ready", function() {
-    bot.user.setGame(`${bot.guilds.size} servers | .help`);
+client.on('ready', () => {
+  console.log(`Bot is Online!`);
+  bot.user.setGame(`${bot.guilds.size} servers | .help`);
 });
 
 // Updates the bot's status if he joins a server
@@ -149,5 +146,11 @@ function MoveMuteUsers(findChannel){
 // * Move from specific channels.
 // * ignore specific users.
 
+
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
